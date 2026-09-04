@@ -81,12 +81,11 @@ npm run build
 
 ## Quality
 
-- GitHub Actions CI for `lint`, `typecheck`, unit tests, browser E2E, and `build`
+- [![CI](https://github.com/jc-morales-dev/Chatbot-Vortex/actions/workflows/ci.yml/badge.svg)](https://github.com/jc-morales-dev/Chatbot-Vortex/actions/workflows/ci.yml) GitHub Actions CI for `lint`, `typecheck`, unit tests, browser E2E, and `build`
+- Live demo: https://chatbot-vortex.vercel.app/
+- **14 unit tests** (Vitest: `src/**/*.test.ts`) covering API helpers, chat titles/send guards, export JSON/Markdown, and file utilities
+- **5 E2E journeys** (Playwright: `tests/e2e/*.spec.ts`) for offline persistence, BYOK configuration/provider use, cancel/export smoke, and graceful fallback after a provider error
 - Public changelog in [CHANGELOG.md](CHANGELOG.md)
-- Unit tests for critical chat and file utilities
-- Playwright journeys for offline persistence, BYOK configuration/provider use,
-  cancel/export smoke, and graceful fallback after a provider error
-- Unit coverage for settings persistence, send guards, export JSON/Markdown, and chat titles
 
 ## Configuration
 
