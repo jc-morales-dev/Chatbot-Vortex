@@ -3,6 +3,8 @@
 [![CI](https://github.com/jc-morales-dev/Chatbot-Vortex/actions/workflows/ci.yml/badge.svg)](https://github.com/jc-morales-dev/Chatbot-Vortex/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-0F172A.svg)](./LICENSE)
 
+**Status:** `demo` — active public demo. [Live](https://chatbot-vortex.vercel.app/) · [Release v1.1.0](https://github.com/jc-morales-dev/Chatbot-Vortex/releases/tag/v1.1.0)
+
 ![Chatbot Vortex screenshot](./Imagen/Chatbot-Vortex.png)
 
 Chatbot Vortex is a chat interface for working with multiple AI providers from a single place. The project lets you try the experience in local mode, connect providers with your own API key, and export conversations straight from the browser.
