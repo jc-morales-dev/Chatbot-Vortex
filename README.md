@@ -1,6 +1,6 @@
 # Chatbot Vortex
 
-[![CI](https://github.com/Victor00128/Chatbot-Vortex/actions/workflows/ci.yml/badge.svg)](https://github.com/Victor00128/Chatbot-Vortex/actions/workflows/ci.yml)
+[![CI](https://github.com/jc-morales-dev/Chatbot-Vortex/actions/workflows/ci.yml/badge.svg)](https://github.com/jc-morales-dev/Chatbot-Vortex/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-0F172A.svg)](./LICENSE)
 
 ![Chatbot Vortex screenshot](./Imagen/Chatbot-Vortex.png)
@@ -52,7 +52,7 @@ Requirements:
 Installation:
 
 ```bash
-git clone https://github.com/Victor00128/Chatbot-Vortex.git
+git clone https://github.com/jc-morales-dev/Chatbot-Vortex.git
 cd Chatbot-Vortex
 npm ci
 npm run dev
