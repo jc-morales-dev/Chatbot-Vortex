@@ -72,12 +72,15 @@ npm run build
 - `npm run lint`
 - `npm run typecheck`
 - `npm run test`
+- `npm run test:e2e`
 
 ## Quality
 
-- GitHub Actions CI for `lint`, `typecheck`, `test`, and `build`
+- GitHub Actions CI for `lint`, `typecheck`, unit tests, browser E2E, and `build`
 - Public changelog in [CHANGELOG.md](CHANGELOG.md)
-- Smoke tests for critical chat and file utilities
+- Unit tests for critical chat and file utilities
+- Playwright journeys for offline persistence, BYOK configuration/provider use,
+  and graceful fallback after a provider error
 
 ## Configuration
 
