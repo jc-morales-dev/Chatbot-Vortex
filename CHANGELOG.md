@@ -6,6 +6,8 @@ All notable changes to this project will be documented in this file.
 
 ### Added
 
+- Unit tests for settings persistence, sendToAI guards, and conversation export (JSON/Markdown).
+- Playwright smoke covering cancel-in-flight generation and JSON export from Settings.
 - Busqueda de conversaciones en la barra lateral: filtra por titulo y contenido del chat, con estado vacio "sin resultados" y limpieza rapida (Escape o boton).
 
 ### Fixed
