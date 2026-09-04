@@ -10,11 +10,14 @@ Chatbot Vortex is a chat interface for working with multiple AI providers from a
 ## Demo
 
 - Live demo: https://chatbot-vortex.vercel.app/
-- Default mode: `offline`
-- Recommended use today: demos, flow validation, and BYOK testing
+- Screenshot: [Imagen/Chatbot-Vortex.png](./Imagen/Chatbot-Vortex.png)
+- Default mode: `offline` (works with no API key)
+- BYOK: paste your own provider key in Settings to call Gemini, Groq, OpenAI, DeepSeek, or OpenRouter from the browser
+- Recommended use today: demos, flow validation, and bring-your-own-key testing
 
 ## What it offers
 
+- Built with **React 19** + **TypeScript** (Vite, Tailwind CSS v4).
 - Multiple providers in a single UI: Gemini, Groq, OpenAI, DeepSeek, OpenRouter, and local mode.
 - Persistent in-browser history with export to JSON and Markdown.
 - Conversation search by title and content from the sidebar.
@@ -80,7 +83,8 @@ npm run build
 - Public changelog in [CHANGELOG.md](CHANGELOG.md)
 - Unit tests for critical chat and file utilities
 - Playwright journeys for offline persistence, BYOK configuration/provider use,
-  and graceful fallback after a provider error
+  cancel/export smoke, and graceful fallback after a provider error
+- Unit coverage for settings persistence, send guards, export JSON/Markdown, and chat titles
 
 ## Configuration
 

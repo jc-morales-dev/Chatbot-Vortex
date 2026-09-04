@@ -2,6 +2,7 @@ import { useCallback, useRef, useState } from 'react';
 import type { AISettings, AppNotice, ChatState, Conversation, FileAttachment, Message } from '../types';
 import { generateBotResponse, generateTitle } from '../utils/chat';
 import { DEFAULT_REQUEST_TIMEOUT_MS, loadSettings, saveSettings, sendToAI } from '../utils/api';
+import { createExportName, exportJson, exportMarkdown } from '../utils/export';
 
 const STORAGE_KEY = 'vortex-conversations';
 
@@ -52,50 +53,6 @@ function createNotice(level: AppNotice['level'], title: string, message: string)
   return { id: uid(), level, title, message };
 }
 
-function exportJson(conversations: Conversation[]): string {
-  return JSON.stringify(
-    {
-      exportedAt: new Date().toISOString(),
-      conversationCount: conversations.length,
-      conversations,
-    },
-    null,
-    2,
-  );
-}
-
-function exportMarkdown(conversations: Conversation[]): string {
-  return conversations
-    .map((conversation) => {
-      const sections = [
-        `# ${conversation.title}`,
-        '',
-        `Creada: ${new Date(conversation.createdAt).toLocaleString('es-ES')}`,
-        `Actualizada: ${new Date(conversation.updatedAt).toLocaleString('es-ES')}`,
-        '',
-      ];
-
-      for (const message of conversation.messages.filter((item) => !item.deleted)) {
-        sections.push(`## ${message.role === 'user' ? 'Usuario' : 'VORTEX'}`);
-        sections.push(`Hora: ${new Date(message.timestamp).toLocaleString('es-ES')}`);
-
-        if (message.attachments?.length) {
-          sections.push('Adjuntos:');
-          for (const attachment of message.attachments) {
-            sections.push(`- ${attachment.name} (${attachment.type}, ${attachment.size} bytes)`);
-          }
-        }
-
-        sections.push('');
-        sections.push(message.content || '(sin texto)');
-        sections.push('');
-      }
-
-      return sections.join('\n');
-    })
-    .join('\n---\n\n');
-}
-
 function downloadFile(fileName: string, contents: string, mimeType: string) {
   const blob = new Blob([contents], { type: mimeType });
   const url = URL.createObjectURL(blob);
@@ -106,21 +63,6 @@ function downloadFile(fileName: string, contents: string, mimeType: string) {
   anchor.click();
   anchor.remove();
   window.setTimeout(() => URL.revokeObjectURL(url), 0);
-}
-
-function slugifyTitle(title: string): string {
-  return title
-    .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '')
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/^-+|-+$/g, '')
-    .slice(0, 48) || 'conversation';
-}
-
-function createExportName(extension: 'json' | 'md', title = 'vortex-export'): string {
-  const stamp = new Date().toISOString().replace(/[:.]/g, '-');
-  return `${slugifyTitle(title)}-${stamp}.${extension}`;
 }
 
 export function useChat() {
