@@ -103,10 +103,7 @@ If you want to use a real provider:
 
 The current version works with your own API key. When you choose a real provider, the key is used directly from the browser.
 
-GitHub secret scanning reports a Google API key in an older revision. That key
-must be treated as compromised and revoked or rotated before the alert is
-resolved. Current tracked files do not match the Google API key pattern, but a
-normal clone still includes repository history.
+Historical secret purged; keys are BYOK client-side only.
 
 That's good for:
 
