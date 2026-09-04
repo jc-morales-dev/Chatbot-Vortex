@@ -45,3 +45,20 @@ test('cancels an in-flight provider response and exports the chat as JSON', asyn
   expect(download.suggestedFilename()).toMatch(/\.json$/);
   await expect(page.getByText(/Exportación lista|Conversación exportada/i)).toBeVisible();
 });
+
+test('saves offline settings and exports markdown from settings', async ({ page }) => {
+  await page.getByLabel('Abrir configuración').click();
+  await page.getByRole('button', { name: /Offline/i }).click();
+  await page.getByRole('button', { name: 'GUARDAR CAMBIOS' }).click();
+  await expect(page.getByText(/Modo local listo/i)).toBeVisible();
+
+  await page.getByRole('textbox', { name: 'Mensaje' }).fill('Exportame esto');
+  await page.getByLabel('Enviar mensaje').click();
+  await expect(page.getByText(/Soy VORTEX|puedo/i).first()).toBeVisible();
+
+  const downloadPromise = page.waitForEvent('download');
+  await page.getByLabel('Abrir configuración').click();
+  await page.getByRole('button', { name: /EXPORTAR MD/i }).click();
+  const download = await downloadPromise;
+  expect(download.suggestedFilename()).toMatch(/\.md$/);
+});
